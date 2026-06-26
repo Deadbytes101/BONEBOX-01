@@ -31,7 +31,8 @@ docs/FIRST_CONTACT.md
 ## Commands
 
 ```txt
-help   show commands
+help   list commands
+ver    print version
 cls    clear screen
 mem    show fixed memory facts
 ports  show touched hardware ports
