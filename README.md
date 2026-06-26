@@ -67,6 +67,7 @@ Windows PowerShell:
 ./scripts/run-qemu.ps1
 ./scripts/verify.ps1
 ./scripts/kernels.ps1
+python tools/write_manifest.py . build/bonebox.img build/bonebox.manifest.json
 ```
 
 Windows setup notes:
@@ -82,12 +83,14 @@ make
 make run
 make verify
 make kernels
+make manifest
 ```
 
 Output image:
 
 ```txt
 build/bonebox.img
+build/bonebox.manifest.json
 ```
 
 ## Law
