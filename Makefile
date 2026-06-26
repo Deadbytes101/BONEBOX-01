@@ -6,9 +6,10 @@ BUILD_DIR := build
 BOOT_BIN := $(BUILD_DIR)/boot.bin
 KERNEL_BIN := $(BUILD_DIR)/kernel.bin
 IMAGE := $(BUILD_DIR)/bonebox.img
+MANIFEST := $(BUILD_DIR)/bonebox.manifest.json
 KERNEL_SECTORS := 32
 
-.PHONY: all run verify current kernels clean
+.PHONY: all run verify current kernels manifest clean
 
 all: $(IMAGE)
 
@@ -20,6 +21,9 @@ current:
 
 kernels:
 	$(PYTHON) tools/list_kernels.py .
+
+manifest: $(IMAGE)
+	$(PYTHON) tools/write_manifest.py . $(IMAGE) $(MANIFEST)
 
 $(BOOT_BIN): boot/boot.asm | $(BUILD_DIR)
 	$(NASM) -f bin $< -o $@
