@@ -34,6 +34,7 @@ docs/FIRST_CONTACT.md
 help   list commands
 ver    print version
 tick   print BIOS timer counter
+seg    print segments and stack pointer
 scan   read one key scan
 last   print last key state
 cls    clear screen
