@@ -91,6 +91,11 @@ run_command:
     cmp ax, 1
     je do_tick
 
+    mov di, word_scan
+    call streq
+    cmp ax, 1
+    je do_scan
+
     mov di, word_mem
     call streq
     cmp ax, 1
@@ -178,6 +183,22 @@ do_tick:
     call put_hex16
     pop es
     pop ax
+    call newline
+    ret
+
+do_scan:
+    mov si, scan_wait_msg
+    call puts
+    call read_key
+    push ax
+    mov si, scan_msg
+    call puts
+    mov al, [last_scan]
+    call put_hex8
+    mov si, char_msg
+    call puts
+    pop ax
+    call put_hex8
     call newline
     ret
 
@@ -282,11 +303,14 @@ read_key:
     jnz .wait
     cmp al, 128
     jae .wait
+    mov dl, al
     xor ah, ah
     mov bx, ax
     mov al, [scancode_table + bx]
     test al, al
     jz .wait
+    mov [last_scan], dl
+    mov [last_char], al
     ret
 
 puts:
@@ -492,8 +516,8 @@ pc_beep:
     pop ax
     ret
 
-banner db 'BONEBOX-01 v0.1.2', 10
-       db 'direct screen. direct keys. clock sense.', 10
+banner db 'BONEBOX-01 v0.1.3', 10
+       db 'direct screen. key scan. clock sense.', 10
        db 'type help', 10, 10, 0
 prompt_msg db 'bone> ', 0
 unknown_msg db 'unknown command; type help', 10, 0
@@ -501,6 +525,7 @@ help_msg db 'commands', 10
          db '  help   list commands', 10
          db '  ver    print version', 10
          db '  tick   print BIOS timer counter', 10
+         db '  scan   read one key scan', 10
          db '  cls    clear screen', 10
          db '  mem    show fixed memory facts', 10
          db '  ports  show touched hardware ports', 10
@@ -509,8 +534,11 @@ help_msg db 'commands', 10
          db '  demo   write pattern to B800 text memory', 10
          db '  law    print machine law', 10
          db '  stop   park CPU', 10, 0
-ver_msg db 'BONEBOX-01 v0.1.2 tick cut', 10, 0
+ver_msg db 'BONEBOX-01 v0.1.3 scan cut', 10, 0
 tick_msg db 'tick 0040:006c=', 0
+scan_wait_msg db 'press one key', 10, 0
+scan_msg db 'scan=', 0
+char_msg db ' char=', 0
 mem_msg db 'boot 0000:7c00  kernel 1000:0000  vga b800:0000', 10, 0
 cs_msg db 'cs=', 0
 ports_msg db 'ports: 60/64 keyboard, 3d4/3d5 cursor, 40/42/43 PIT, 61 speaker', 10, 0
@@ -524,6 +552,7 @@ word_help db 'help', 0
 word_cls db 'cls', 0
 word_ver db 'ver', 0
 word_tick db 'tick', 0
+word_scan db 'scan', 0
 word_mem db 'mem', 0
 word_ports db 'ports', 0
 word_peek db 'peek', 0
@@ -543,4 +572,6 @@ scancode_table:
 
 cursor_pos dw 0
 line_len db 0
+last_scan db 0
+last_char db 0
 line_buf times 64 db 0
