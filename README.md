@@ -63,6 +63,19 @@ First working boot proof is recorded in:
 docs/FIRST_CONTACT.md
 ```
 
+## Docs
+
+```txt
+docs/MACHINE_NOTES.md   what the box touches
+docs/FINAL_STATE.md     what v1.0.0 freezes
+docs/KERNELS.md         kernel cuts and current pointer
+docs/RELEASE_PLAN.md    release line
+docs/WINDOWS.md         Windows build notes
+docs/PORTS.md           touched hardware ports
+docs/DESIGN.md          shape of the machine
+docs/FIRST_CONTACT.md   first boot proof
+```
+
 ## Commands
 
 ```txt
