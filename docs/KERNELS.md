@@ -20,6 +20,13 @@ Current cut:
 v0.1.8 addr cut
 ```
 
+Release line:
+
+```txt
+v0.1.9 cleanup cut
+v0.2.0 First Contact Final
+```
+
 Why this exists:
 
 ```txt
