@@ -11,7 +11,13 @@ kernel/current.asm
 `current.asm` includes the active kernel cut. At the moment:
 
 ```txt
-kernel/core_v017.asm
+kernel/core_v018.asm
+```
+
+Current cut:
+
+```txt
+v0.1.8 addr cut
 ```
 
 Why this exists:
