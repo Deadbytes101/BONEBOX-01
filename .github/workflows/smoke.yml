@@ -1,0 +1,27 @@
+name: smoke
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y nasm
+          python3 --version
+          nasm -v
+
+      - name: build
+        run: make
+
+      - name: verify
+        run: |
+          python3 tools/check_image.py build/bonebox.img
+          python3 tools/smoke_image.py build/bonebox.img
