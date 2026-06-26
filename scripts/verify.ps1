@@ -8,8 +8,6 @@ function Find-Tool {
 }
 
 $Root = Resolve-Path "$PSScriptRoot/.."
-& (Join-Path $Root "scripts/build.ps1")
-if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 $Python = Find-Tool "python"
 if (-not $Python) { $Python = Find-Tool "py" }
@@ -18,6 +16,12 @@ if (-not $Python) {
     Write-Host "needed : image verification"
     exit 1
 }
+
+& $Python (Join-Path $Root "tools/check_current.py") $Root
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+& (Join-Path $Root "scripts/build.ps1")
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 $Image = Join-Path $Root "build/bonebox.img"
 if (-not (Test-Path $Image)) {
