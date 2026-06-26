@@ -20,7 +20,9 @@ Just the box answering back.
 
 ## First contact
 
-<img width="1254" height="1254" alt="BONEBOX-01 logo" src="https://github.com/user-attachments/assets/90a83d85-7a4d-4264-9fab-e11d602d53bd" />
+<p align="center">
+  <img width="254" height="254" alt="BONEBOX-01 logo" src="https://github.com/user-attachments/assets/90a83d85-7a4d-4264-9fab-e11d602d53bd" />
+</p>
 
 ![release](https://img.shields.io/badge/RELEASE-v1.0.0-blue)
 ![target](https://img.shields.io/badge/TARGET-x86_BIOS-yellow)
