@@ -8,12 +8,15 @@ KERNEL_BIN := $(BUILD_DIR)/kernel.bin
 IMAGE := $(BUILD_DIR)/bonebox.img
 KERNEL_SECTORS := 32
 
-.PHONY: all run verify clean
+.PHONY: all run verify current clean
 
 all: $(IMAGE)
 
 $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
+
+current:
+	$(PYTHON) tools/check_current.py .
 
 $(BOOT_BIN): boot/boot.asm | $(BUILD_DIR)
 	$(NASM) -f bin $< -o $@
@@ -27,7 +30,7 @@ $(IMAGE): $(BOOT_BIN) $(KERNEL_BIN) tools/mkimage.py
 run: $(IMAGE)
 	$(QEMU) -machine pc -drive file=$(IMAGE),format=raw,index=0,media=disk
 
-verify: $(IMAGE)
+verify: current $(IMAGE)
 	$(PYTHON) tools/check_image.py $(IMAGE)
 	$(PYTHON) tools/smoke_image.py $(IMAGE)
 	$(PYTHON) tools/inspect_image.py $(IMAGE)
