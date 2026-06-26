@@ -6,3 +6,6 @@ build/
 *.log
 .DS_Store
 Thumbs.db
+
+nasm.exe
+ndisasm.exe
