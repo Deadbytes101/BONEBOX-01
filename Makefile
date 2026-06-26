@@ -8,7 +8,7 @@ KERNEL_BIN := $(BUILD_DIR)/kernel.bin
 IMAGE := $(BUILD_DIR)/bonebox.img
 KERNEL_SECTORS := 32
 
-.PHONY: all run verify current clean
+.PHONY: all run verify current kernels clean
 
 all: $(IMAGE)
 
@@ -17,6 +17,9 @@ $(BUILD_DIR):
 
 current:
 	$(PYTHON) tools/check_current.py .
+
+kernels:
+	$(PYTHON) tools/list_kernels.py .
 
 $(BOOT_BIN): boot/boot.asm | $(BUILD_DIR)
 	$(NASM) -f bin $< -o $@
