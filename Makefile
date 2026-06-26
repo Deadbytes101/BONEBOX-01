@@ -9,7 +9,7 @@ IMAGE := $(BUILD_DIR)/bonebox.img
 MANIFEST := $(BUILD_DIR)/bonebox.manifest.json
 KERNEL_SECTORS := 32
 
-.PHONY: all run verify current kernels manifest clean
+.PHONY: all run verify current current-latest kernels manifest clean
 
 all: $(IMAGE)
 
@@ -18,6 +18,9 @@ $(BUILD_DIR):
 
 current:
 	$(PYTHON) tools/check_current.py .
+
+current-latest:
+	$(PYTHON) tools/set_current.py latest --root .
 
 kernels:
 	$(PYTHON) tools/list_kernels.py .
