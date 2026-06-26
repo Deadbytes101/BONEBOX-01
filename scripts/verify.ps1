@@ -29,6 +29,9 @@ if (-not (Test-Path $Image)) {
 & $Python (Join-Path $Root "tools/check_image.py") $Image
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
+& $Python (Join-Path $Root "tools/smoke_image.py") $Image
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
 $Hash = Get-FileHash $Image -Algorithm SHA256
 Write-Host "sha256 $($Hash.Hash.ToLowerInvariant())"
 Write-Host "verify ok"
