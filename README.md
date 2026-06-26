@@ -9,19 +9,39 @@
 ![qemu](https://img.shields.io/badge/PROOF-QEMU-green)
 ![license](https://img.shields.io/badge/LICENSE-Apache--2.0-lightgrey)
 
-One person. One box. No OS underneath.
+One box.
+One boot sector.
+No OS underneath.
 
-BONEBOX-01 is a small bare-metal machine for direct contact with the old PC surface: boot sector, keyboard port, VGA text memory, PIT, PC speaker.
+BONEBOX-01 is a small x86 BIOS machine.
+It starts from a boot sector and lands in its own 16-bit shell.
+The screen is VGA memory.
+The keyboard is port `0x60`.
+The clock is BIOS data.
+The speaker is voltage.
 
-It boots, owns the screen, reads keys, and answers simple commands.
+No desktop.
+No runtime.
+No package smell.
+Just the machine answering back.
 
 ## First contact
 
 <img width="1254" height="1254" alt="BONEBOX-01 logo" src="https://github.com/user-attachments/assets/90a83d85-7a4d-4264-9fab-e11d602d53bd" />
 
-Target: x86 BIOS, QEMU first.
+```txt
+BONEBOX MARK
+BLUE B IN A BLACK SCREEN
+BONES BEHIND THE BOX
+OLD PC SURFACE
+DEADBYTE CUT
+NO SOFT BED UNDER IT
+```
 
-The first machine stays deliberately small:
+Target: x86 BIOS.
+Proof host: QEMU.
+
+The first machine stays small on purpose:
 
 ```txt
 boot sector -> 16-bit kernel -> direct VGA shell
