@@ -1,8 +1,9 @@
 $ErrorActionPreference = "Stop"
 
-param(
-    [Parameter(Mandatory = $false)][string]$Target = "latest"
-)
+$Target = "latest"
+if ($args.Count -ge 1) {
+    $Target = $args[0]
+}
 
 function Find-Tool {
     param([Parameter(Mandatory = $true)][string]$Name)
