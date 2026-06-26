@@ -18,8 +18,8 @@ $(BUILD_DIR):
 $(BOOT_BIN): boot/boot.asm | $(BUILD_DIR)
 	$(NASM) -f bin $< -o $@
 
-$(KERNEL_BIN): kernel/core_v017.asm | $(BUILD_DIR)
-	$(NASM) -f bin $< -o $@
+$(KERNEL_BIN): kernel/current.asm kernel/core_v017.asm | $(BUILD_DIR)
+	$(NASM) -f bin kernel/current.asm -o $@
 
 $(IMAGE): $(BOOT_BIN) $(KERNEL_BIN) tools/mkimage.py
 	$(PYTHON) tools/mkimage.py --boot $(BOOT_BIN) --kernel $(KERNEL_BIN) --out $(IMAGE) --kernel-sectors $(KERNEL_SECTORS)
