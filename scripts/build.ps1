@@ -1,19 +1,31 @@
 $ErrorActionPreference = "Stop"
 
+$Root = Resolve-Path "$PSScriptRoot/.."
+
 function Find-Tool {
-    param([Parameter(Mandatory = $true)][string]$Name)
+    param(
+        [Parameter(Mandatory = $true)][string]$Name,
+        [string[]]$FallbackPaths = @()
+    )
+
     $Cmd = Get-Command $Name -ErrorAction SilentlyContinue
     if ($Cmd) { return $Cmd.Source }
+
+    foreach ($Path in $FallbackPaths) {
+        if (Test-Path $Path) { return $Path }
+    }
+
     return $null
 }
 
 function Need-Tool {
     param(
         [Parameter(Mandatory = $true)][string]$Name,
-        [Parameter(Mandatory = $true)][string]$Reason
+        [Parameter(Mandatory = $true)][string]$Reason,
+        [string[]]$FallbackPaths = @()
     )
 
-    $Tool = Find-Tool $Name
+    $Tool = Find-Tool $Name $FallbackPaths
     if (-not $Tool) {
         Write-Host "missing: $Name"
         Write-Host "needed : $Reason"
@@ -23,11 +35,14 @@ function Need-Tool {
     return $Tool
 }
 
-$Root = Resolve-Path "$PSScriptRoot/.."
 $Build = Join-Path $Root "build"
 New-Item -ItemType Directory -Force $Build | Out-Null
 
-$Nasm = Need-Tool "nasm" "flat binary assembly"
+$Nasm = Need-Tool "nasm" "flat binary assembly" @(
+    (Join-Path $Root "nasm.exe"),
+    (Join-Path $Root "tools/nasm.exe")
+)
+
 $Python = Find-Tool "python"
 if (-not $Python) { $Python = Find-Tool "py" }
 if (-not $Python) {
@@ -42,7 +57,12 @@ $Kernel = Join-Path $Build "kernel.bin"
 $Image = Join-Path $Build "bonebox.img"
 
 & $Nasm -f bin (Join-Path $Root "boot/boot.asm") -o $Boot
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
 & $Nasm -f bin (Join-Path $Root "kernel/core.asm") -o $Kernel
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
 & $Python (Join-Path $Root "tools/mkimage.py") --boot $Boot --kernel $Kernel --out $Image --kernel-sectors 32
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 Write-Host "built $Image"
