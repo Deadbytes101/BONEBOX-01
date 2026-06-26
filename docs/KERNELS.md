@@ -28,4 +28,17 @@ current.asm keeps build scripts stable
 Makefile and PowerShell do not change every cut
 ```
 
+Switch current kernel on Windows:
+
+```powershell
+./scripts/set-current.ps1 latest
+./scripts/set-current.ps1 kernel/core_v018.asm
+```
+
+Switch current kernel with make:
+
+```sh
+make current-latest
+```
+
 Do not edit old cuts unless the old cut itself is broken. Add a new cut, then move `current.asm`.
