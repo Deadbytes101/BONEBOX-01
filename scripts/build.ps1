@@ -8,12 +8,12 @@ function Find-Tool {
         [string[]]$FallbackPaths = @()
     )
 
-    $Cmd = Get-Command $Name -ErrorAction SilentlyContinue
-    if ($Cmd) { return $Cmd.Source }
-
     foreach ($Path in $FallbackPaths) {
         if (Test-Path $Path) { return $Path }
     }
+
+    $Cmd = Get-Command $Name -ErrorAction Ignore
+    if ($Cmd) { return $Cmd.Source }
 
     return $null
 }
