@@ -81,6 +81,11 @@ run_command:
     cmp ax, 1
     je do_cls
 
+    mov di, word_ver
+    call streq
+    cmp ax, 1
+    je do_ver
+
     mov di, word_mem
     call streq
     cmp ax, 1
@@ -148,6 +153,11 @@ do_help:
 
 do_cls:
     call clear_screen
+    ret
+
+do_ver:
+    mov si, ver_msg
+    call puts
     ret
 
 do_mem:
@@ -461,12 +471,23 @@ pc_beep:
     pop ax
     ret
 
-banner db 'BONEBOX-01', 10
+banner db 'BONEBOX-01 v0.1.1', 10
        db 'direct screen. direct keys. no host OS.', 10
        db 'type help', 10, 10, 0
 prompt_msg db 'bone> ', 0
-unknown_msg db 'unknown command', 10, 0
-help_msg db 'help cls mem ports peek beep demo law stop', 10, 0
+unknown_msg db 'unknown command; type help', 10, 0
+help_msg db 'commands', 10
+         db '  help   list commands', 10
+         db '  ver    print version', 10
+         db '  cls    clear screen', 10
+         db '  mem    show fixed memory facts', 10
+         db '  ports  show touched hardware ports', 10
+         db '  peek   show boot bytes at 0000:7c00', 10
+         db '  beep   hit PIT and PC speaker', 10
+         db '  demo   write pattern to B800 text memory', 10
+         db '  law    print machine law', 10
+         db '  stop   park CPU', 10, 0
+ver_msg db 'BONEBOX-01 v0.1.1 console cut', 10, 0
 mem_msg db 'boot 0000:7c00  kernel 1000:0000  vga b800:0000', 10, 0
 cs_msg db 'cs=', 0
 ports_msg db 'ports: 60/64 keyboard, 3d4/3d5 cursor, 40/42/43 PIT, 61 speaker', 10, 0
@@ -478,6 +499,7 @@ stop_msg db 'stop', 10, 0
 
 word_help db 'help', 0
 word_cls db 'cls', 0
+word_ver db 'ver', 0
 word_mem db 'mem', 0
 word_ports db 'ports', 0
 word_peek db 'peek', 0
