@@ -1,5 +1,14 @@
 # BONEBOX-01
 
+![release](https://img.shields.io/badge/RELEASE-v1.0.0-blue)
+![target](https://img.shields.io/badge/TARGET-x86_BIOS-yellow)
+![boot](https://img.shields.io/badge/BOOT-512_BYTE_SECTOR-white)
+![machine](https://img.shields.io/badge/MACHINE-BARE_METAL-black)
+![shell](https://img.shields.io/badge/SHELL-VGA_TEXT_MODE-blue)
+![asm](https://img.shields.io/badge/ASM-NASM-red)
+![qemu](https://img.shields.io/badge/PROOF-QEMU-green)
+![license](https://img.shields.io/badge/LICENSE-Apache--2.0-lightgrey)
+
 One person. One box. No OS underneath.
 
 BONEBOX-01 is a small bare-metal machine for direct contact with the old PC surface: boot sector, keyboard port, VGA text memory, PIT, PC speaker.
@@ -7,6 +16,8 @@ BONEBOX-01 is a small bare-metal machine for direct contact with the old PC surf
 It boots, owns the screen, reads keys, and answers simple commands.
 
 ## First contact
+
+<img width="1254" height="1254" alt="BONEBOX-01 logo" src="https://github.com/user-attachments/assets/90a83d85-7a4d-4264-9fab-e11d602d53bd" />
 
 Target: x86 BIOS, QEMU first.
 
@@ -37,6 +48,7 @@ tick   print BIOS timer counter
 seg    print segments and stack pointer
 state  print shell state
 map    print fixed memory map
+addr   print kernel label offsets
 scan   read one key scan
 last   print last key state
 cls    clear screen
