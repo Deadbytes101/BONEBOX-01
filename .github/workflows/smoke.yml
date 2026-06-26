@@ -18,6 +18,9 @@ jobs:
           python3 --version
           nasm -v
 
+      - name: current
+        run: python3 tools/check_current.py .
+
       - name: build
         run: make
 
