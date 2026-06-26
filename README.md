@@ -43,15 +43,22 @@ Requirements:
 ```txt
 nasm
 python 3
-qemu-system-i386 optional
+qemu-system-i386 optional for run
 ```
 
 Windows PowerShell:
 
 ```powershell
+./scripts/doctor.ps1
 ./scripts/build.ps1
 ./scripts/run-qemu.ps1
 ./scripts/verify.ps1
+```
+
+Windows setup notes:
+
+```txt
+docs/WINDOWS.md
 ```
 
 POSIX shell with make:
