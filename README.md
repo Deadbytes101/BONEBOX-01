@@ -1,5 +1,27 @@
 # BONEBOX-01
 
+One box.
+One boot sector.
+No OS underneath.
+
+BONEBOX-01 is an x86 BIOS box that wakes up in its own 16-bit shell.
+
+The screen is memory.
+The keyboard is a port.
+The clock is a BIOS counter.
+The speaker is voltage.
+
+No desktop.
+No runtime.
+No package smell.
+No soft layer pretending to be the machine.
+
+Just the box answering back.
+
+## First contact
+
+<img width="1254" height="1254" alt="BONEBOX-01 logo" src="https://github.com/user-attachments/assets/90a83d85-7a4d-4264-9fab-e11d602d53bd" />
+
 ![release](https://img.shields.io/badge/RELEASE-v1.0.0-blue)
 ![target](https://img.shields.io/badge/TARGET-x86_BIOS-yellow)
 ![boot](https://img.shields.io/badge/BOOT-512_BYTE_SECTOR-white)
@@ -9,33 +31,13 @@
 ![qemu](https://img.shields.io/badge/PROOF-QEMU-green)
 ![license](https://img.shields.io/badge/LICENSE-Apache--2.0-lightgrey)
 
-One box.
-One boot sector.
-No OS underneath.
-
-BONEBOX-01 is a small x86 BIOS machine.
-It starts from a boot sector and lands in its own 16-bit shell.
-The screen is VGA memory.
-The keyboard is port `0x60`.
-The clock is BIOS data.
-The speaker is voltage.
-
-No desktop.
-No runtime.
-No package smell.
-Just the machine answering back.
-
-## First contact
-
-<img width="1254" height="1254" alt="BONEBOX-01 logo" src="https://github.com/user-attachments/assets/90a83d85-7a4d-4264-9fab-e11d602d53bd" />
-
 ```txt
 BONEBOX MARK
 BLUE B IN A BLACK SCREEN
 BONES BEHIND THE BOX
 OLD PC SURFACE
 DEADBYTE CUT
-NO SOFT BED UNDER IT
+DIRECT MACHINE CONTACT
 ```
 
 Target: x86 BIOS.
