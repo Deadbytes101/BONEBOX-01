@@ -35,6 +35,7 @@ help   list commands
 ver    print version
 tick   print BIOS timer counter
 scan   read one key scan
+last   print last key state
 cls    clear screen
 mem    show fixed memory facts
 ports  show touched hardware ports
