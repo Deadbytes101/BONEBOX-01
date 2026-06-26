@@ -36,6 +36,7 @@ ver    print version
 tick   print BIOS timer counter
 seg    print segments and stack pointer
 state  print shell state
+map    print fixed memory map
 scan   read one key scan
 last   print last key state
 cls    clear screen
