@@ -22,6 +22,12 @@ No network.
 No multitasking.
 No package manager.
 
+First working boot proof is recorded in:
+
+```txt
+docs/FIRST_CONTACT.md
+```
+
 ## Commands
 
 ```txt
