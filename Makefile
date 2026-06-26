@@ -18,7 +18,7 @@ $(BUILD_DIR):
 $(BOOT_BIN): boot/boot.asm | $(BUILD_DIR)
 	$(NASM) -f bin $< -o $@
 
-$(KERNEL_BIN): kernel/core_v015.asm | $(BUILD_DIR)
+$(KERNEL_BIN): kernel/core_v016.asm | $(BUILD_DIR)
 	$(NASM) -f bin $< -o $@
 
 $(IMAGE): $(BOOT_BIN) $(KERNEL_BIN) tools/mkimage.py
