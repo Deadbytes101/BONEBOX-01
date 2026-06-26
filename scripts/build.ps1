@@ -59,7 +59,7 @@ $Image = Join-Path $Build "bonebox.img"
 & $Nasm -f bin (Join-Path $Root "boot/boot.asm") -o $Boot
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
-& $Nasm -f bin (Join-Path $Root "kernel/core_v016.asm") -o $Kernel
+& $Nasm -f bin (Join-Path $Root "kernel/core_v017.asm") -o $Kernel
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 & $Python (Join-Path $Root "tools/mkimage.py") --boot $Boot --kernel $Kernel --out $Image --kernel-sectors 32
