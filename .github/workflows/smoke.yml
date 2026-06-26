@@ -32,8 +32,9 @@ jobs:
 
       - name: proof
         run: |
+          python3 tools/write_manifest.py . build/bonebox.img build/bonebox.manifest.json
           sha256sum build/bonebox.img | tee build/bonebox.img.sha256
-          ls -l build/bonebox.img build/bonebox.img.sha256
+          ls -l build/bonebox.img build/bonebox.img.sha256 build/bonebox.manifest.json
 
       - name: artifact
         uses: actions/upload-artifact@v4
@@ -42,4 +43,5 @@ jobs:
           path: |
             build/bonebox.img
             build/bonebox.img.sha256
+            build/bonebox.manifest.json
           if-no-files-found: error
