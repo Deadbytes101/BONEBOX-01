@@ -1,5 +1,5 @@
 NASM ?= nasm
-PYTHON ?= python3
+PYTHON ?= python
 QEMU ?= qemu-system-i386
 
 BUILD_DIR := build
