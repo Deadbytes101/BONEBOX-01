@@ -1,5 +1,7 @@
 $ErrorActionPreference = "Stop"
 
+$Root = Resolve-Path "$PSScriptRoot/.."
+
 function Find-Tool {
     param(
         [Parameter(Mandatory = $true)][string]$Name,
@@ -20,7 +22,10 @@ function Find-Tool {
     return $null
 }
 
-$Nasm = Find-Tool "nasm"
+$Nasm = Find-Tool "nasm" @(
+    (Join-Path $Root "nasm.exe"),
+    (Join-Path $Root "tools/nasm.exe")
+)
 $Python = Find-Tool "python"
 if (-not $Python) {
     $Python = Find-Tool "py"
