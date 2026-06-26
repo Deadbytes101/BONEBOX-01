@@ -33,7 +33,7 @@ peek   show bytes from boot memory
 beep   hit the PIT and PC speaker
 demo   write directly into B800 text memory
 law    print the machine law
-halt   stop the CPU
+stop   park the CPU
 ```
 
 ## Build
