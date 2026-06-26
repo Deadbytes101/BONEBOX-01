@@ -1,4 +1,4 @@
 ; Active BONEBOX-01 kernel.
 ; Build scripts assemble this file, not versioned kernels directly.
 
-%include "kernel/core_v017.asm"
+%include "kernel/core_v018.asm"
