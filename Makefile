@@ -28,7 +28,7 @@ manifest: $(IMAGE)
 $(BOOT_BIN): boot/boot.asm | $(BUILD_DIR)
 	$(NASM) -f bin $< -o $@
 
-$(KERNEL_BIN): kernel/current.asm kernel/core_v017.asm | $(BUILD_DIR)
+$(KERNEL_BIN): kernel/current.asm | $(BUILD_DIR)
 	$(NASM) -f bin kernel/current.asm -o $@
 
 $(IMAGE): $(BOOT_BIN) $(KERNEL_BIN) tools/mkimage.py
