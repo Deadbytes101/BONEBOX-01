@@ -33,6 +33,7 @@ docs/FIRST_CONTACT.md
 ```txt
 help   list commands
 ver    print version
+tick   print BIOS timer counter
 cls    clear screen
 mem    show fixed memory facts
 ports  show touched hardware ports
