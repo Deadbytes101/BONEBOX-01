@@ -22,7 +22,7 @@ jobs:
         run: python3 tools/check_current.py .
 
       - name: build
-        run: make
+        run: make PYTHON=python3
 
       - name: verify
         run: |
