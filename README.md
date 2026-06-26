@@ -66,6 +66,7 @@ Windows PowerShell:
 ./scripts/build.ps1
 ./scripts/run-qemu.ps1
 ./scripts/verify.ps1
+./scripts/kernels.ps1
 ```
 
 Windows setup notes:
@@ -80,6 +81,7 @@ POSIX shell with make:
 make
 make run
 make verify
+make kernels
 ```
 
 Output image:
