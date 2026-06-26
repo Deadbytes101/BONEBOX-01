@@ -29,6 +29,7 @@ run: $(IMAGE)
 
 verify: $(IMAGE)
 	$(PYTHON) tools/check_image.py $(IMAGE)
+	$(PYTHON) tools/smoke_image.py $(IMAGE)
 
 clean:
 	rm -rf $(BUILD_DIR)
