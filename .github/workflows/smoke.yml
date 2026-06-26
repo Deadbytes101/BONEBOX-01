@@ -25,6 +25,7 @@ jobs:
         run: |
           python3 tools/check_image.py build/bonebox.img
           python3 tools/smoke_image.py build/bonebox.img
+          python3 tools/inspect_image.py build/bonebox.img
 
       - name: proof
         run: |
