@@ -1,6 +1,6 @@
 # Kernels
 
-BONEBOX keeps old kernel cuts as fixed fossils.
+BONEBOX keeps old kernel cuts as fossils.
 
 The build path assembles one pointer file:
 
@@ -11,20 +11,13 @@ kernel/current.asm
 `current.asm` includes the active kernel cut. At the moment:
 
 ```txt
-kernel/core_v018.asm
+kernel/core_v101.asm
 ```
 
 Current cut:
 
 ```txt
-v0.1.8 addr cut
-```
-
-Release line:
-
-```txt
-v0.1.9 cleanup cut
-v0.2.0 First Contact Final
+v1.0.1 virtualbox key cut
 ```
 
 Why this exists:
@@ -33,13 +26,26 @@ Why this exists:
 versioned kernels keep proof history
 current.asm keeps build scripts stable
 Makefile and PowerShell do not change every cut
+old release proof stays old
+bad proof gets a new cut
+```
+
+Known cuts:
+
+```txt
+kernel/core_v014.asm
+kernel/core_v015.asm
+kernel/core_v016.asm
+kernel/core_v017.asm
+kernel/core_v018.asm  v1.0.0 release proof, QEMU OK, VirtualBox keyboard bad
+kernel/core_v101.asm  v1.0.1, BIOS int16 keyboard path
 ```
 
 Switch current kernel on Windows:
 
 ```powershell
 ./scripts/set-current.ps1 latest
-./scripts/set-current.ps1 kernel/core_v018.asm
+./scripts/set-current.ps1 kernel/core_v101.asm
 ```
 
 Switch current kernel with make:
@@ -48,4 +54,5 @@ Switch current kernel with make:
 make current-latest
 ```
 
-Do not edit old cuts unless the old cut itself is broken. Add a new cut, then move `current.asm`.
+Do not rewrite old cuts for vanity.
+Add a new cut, move `current.asm`, build, test, tag.
