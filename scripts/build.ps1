@@ -55,6 +55,7 @@ if (-not $Python) {
 $Boot = Join-Path $Build "boot.bin"
 $Kernel = Join-Path $Build "kernel.bin"
 $Image = Join-Path $Build "bonebox.img"
+$Iso = Join-Path $Build "bonebox.iso"
 
 & $Nasm -f bin (Join-Path $Root "boot/boot.asm") -o $Boot
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
@@ -65,4 +66,8 @@ if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 & $Python (Join-Path $Root "tools/mkimage.py") --boot $Boot --kernel $Kernel --out $Image --kernel-sectors 32
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
+& $Python (Join-Path $Root "tools/mkiso.py") --image $Image --out $Iso
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
 Write-Host "built $Image"
+Write-Host "built $Iso"
