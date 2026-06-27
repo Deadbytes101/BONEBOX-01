@@ -8,7 +8,7 @@ It wakes from BIOS.
 It reads sectors.
 It jumps to `1000:0000`.
 It writes the screen by touching `b800:0000`.
-It reads the keyboard from `0x60` and `0x64`.
+It reads keys through BIOS `int 16h` because VirtualBox is not QEMU.
 It touches the PIT and speaker ports.
 It asks the BIOS data area for time.
 
@@ -25,7 +25,7 @@ BIOS
   -> load 32 sectors
   -> jump 1000:0000
   -> kernel/current.asm
-  -> kernel/core_v018.asm
+  -> kernel/core_v101.asm
 ```
 
 ## Screen
@@ -45,14 +45,18 @@ It is VGA hardware state.
 ## Keyboard
 
 ```txt
-status port: 0x64
-data port  : 0x60
+BIOS keyboard service: int 16h
+AH = scan code
+AL = ASCII char
 ```
 
-BONEBOX reads scan codes first.
-Then it maps them to small ASCII.
-`scan` shows the raw key scan.
-`last` shows what the box remembers.
+The first public image used direct `0x60/0x64` polling.
+QEMU accepted it.
+VirtualBox did not.
+
+`v1.0.1` uses BIOS key service for shell input so the box answers in both.
+`scan` still shows the key scan.
+`last` still shows what the box remembers.
 
 ## Time
 
