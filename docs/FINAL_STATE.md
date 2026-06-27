@@ -3,7 +3,7 @@
 `v1.0.0` is the first closed BONEBOX proof.
 
 The release tag is public.
-The release asset is public.
+The release assets are public.
 The image boots.
 The repo is clean.
 
@@ -11,8 +11,10 @@ The repo is clean.
 
 ```txt
 release : v1.0.0
-asset   : bonebox.img
-sha256  : 12758c18d5a7a11bb41a0cc717c4aa15fd5fed0ebc2575f4f90ed258adde2b2b
+img     : bonebox.img
+img sha : 12758c18d5a7a11bb41a0cc717c4aa15fd5fed0ebc2575f4f90ed258adde2b2b
+iso     : bonebox.iso
+iso sha : e059f0922ace02c600e73ac5d8ea8cf7dc8b395af6dcc6054637cd68205ec1b9
 kernel  : kernel/core_v018.asm
 pointer : kernel/current.asm
 host    : QEMU
@@ -58,10 +60,12 @@ scripts/doctor.ps1
 scripts/build.ps1
 scripts/verify.ps1
 scripts/run-qemu.ps1
+scripts/run-iso.ps1
 scripts/kernels.ps1
 scripts/set-current.ps1
 
 tools/mkimage.py
+tools/mkiso.py
 tools/check_image.py
 tools/smoke_image.py
 tools/inspect_image.py
@@ -76,6 +80,7 @@ tools/write_manifest.py
 ```txt
 boot sector handoff
 flat kernel image
+El Torito ISO wrapper
 VGA text shell
 keyboard scan input
 BIOS tick read
@@ -85,12 +90,13 @@ fixed memory map
 kernel label offsets
 boot bytes peek
 speaker touch
-QEMU run script
+QEMU raw image run
+QEMU ISO run
 Windows build path
 image smoke proof
 kernel cut list
 current kernel pointer
-GitHub release asset
+GitHub release assets
 repo topics
 repo description
 README mark
