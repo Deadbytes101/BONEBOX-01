@@ -68,6 +68,7 @@ docs/FIRST_CONTACT.md
 ```txt
 docs/MACHINE_NOTES.md   what the box touches
 docs/FINAL_STATE.md     what v1.0.0 freezes
+docs/ISO.md             why the ISO exists
 docs/KERNELS.md         kernel cuts and current pointer
 docs/RELEASE_PLAN.md    release line
 docs/WINDOWS.md         Windows build notes
