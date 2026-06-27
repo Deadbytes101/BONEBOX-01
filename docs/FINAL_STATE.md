@@ -1,13 +1,29 @@
 # FINAL STATE
 
-`v1.0.0` is the first closed BONEBOX proof.
+`v1.0.0` proved the box.
+`v1.0.1` fixes the VirtualBox keyboard path.
 
-The release tag is public.
-The release assets are public.
-The image boots.
-The repo is clean.
+The raw image is still canonical.
+The ISO is a VM wrapper.
+The kernel pointer now follows the live cut.
 
-## Frozen proof
+## Current cut
+
+```txt
+cut     : v1.0.1
+kernel  : kernel/core_v101.asm
+pointer : kernel/current.asm
+fix     : shell input uses BIOS int 16h
+reason  : direct 0x60/0x64 polling worked in QEMU, not VirtualBox ISO boot
+```
+
+The banner now says:
+
+```txt
+BONEBOX-01 v1.0.1
+```
+
+## Last public release
 
 ```txt
 release : v1.0.0
@@ -16,20 +32,12 @@ img sha : 12758c18d5a7a11bb41a0cc717c4aa15fd5fed0ebc2575f4f90ed258adde2b2b
 iso     : bonebox.iso
 iso sha : e059f0922ace02c600e73ac5d8ea8cf7dc8b395af6dcc6054637cd68205ec1b9
 kernel  : kernel/core_v018.asm
-pointer : kernel/current.asm
 host    : QEMU
+status  : boots in VirtualBox, keyboard path does not answer there
 ```
 
-The banner inside the frozen kernel still says:
-
-```txt
-BONEBOX-01 v0.1.8
-```
-
-That is intentional.
-`v1.0.0` is the public freeze of that proven cut.
-Do not rewrite the old cut just to make the number prettier.
-Proof beats cosmetics.
+Do not rewrite that release.
+Cut forward.
 
 ## Commands in the box
 
@@ -56,7 +64,6 @@ stop
 ## Repo proof tools
 
 ```txt
-scripts/doctor.ps1
 scripts/build.ps1
 scripts/verify.ps1
 scripts/run-qemu.ps1
@@ -82,7 +89,7 @@ boot sector handoff
 flat kernel image
 El Torito ISO wrapper
 VGA text shell
-keyboard scan input
+BIOS keyboard shell input
 BIOS tick read
 segment print
 shell state print
@@ -92,6 +99,7 @@ boot bytes peek
 speaker touch
 QEMU raw image run
 QEMU ISO run
+VirtualBox ISO boot path
 Windows build path
 image smoke proof
 kernel cut list
@@ -102,15 +110,15 @@ repo description
 README mark
 ```
 
-## Do not mess with the freeze
+## Rule
 
-After `v1.0.0`, do not mutate the frozen line.
-Start a new line.
+Do not mutate old release proof.
+Cut forward.
 
 ```txt
-v1.1.x input line
-v1.2.x memory line
-v1.3.x disk read-only line
+bad proof -> new cut
+new cut -> test
+test -> tag
 ```
 
 Small cuts.
