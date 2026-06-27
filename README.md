@@ -114,6 +114,7 @@ Windows PowerShell:
 ./scripts/doctor.ps1
 ./scripts/build.ps1
 ./scripts/run-qemu.ps1
+./scripts/run-iso.ps1
 ./scripts/verify.ps1
 ./scripts/kernels.ps1
 python tools/write_manifest.py . build/bonebox.img build/bonebox.manifest.json
@@ -130,6 +131,7 @@ POSIX shell with make:
 ```sh
 make
 make run
+make run-iso
 make verify
 make kernels
 make manifest
@@ -138,7 +140,8 @@ make manifest
 Output image:
 
 ```txt
-build/bonebox.img
+build/bonebox.img  raw disk image canonical
+build/bonebox.iso  El Torito 1.44M boot wrapper
 build/bonebox.manifest.json
 ```
 
