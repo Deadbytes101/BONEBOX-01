@@ -7,7 +7,7 @@ No OS underneath.
 BONEBOX-01 is an x86 BIOS box that wakes up in its own 16-bit shell.
 
 The screen is memory.
-The keyboard is a port.
+The keyboard is BIOS key state now.
 The clock is a BIOS counter.
 The speaker is voltage.
 
@@ -24,13 +24,14 @@ Just the box answering back.
   <img width="254" height="254" alt="BONEBOX-01 logo" src="https://github.com/user-attachments/assets/90a83d85-7a4d-4264-9fab-e11d602d53bd" />
 </p>
 
-![release](https://img.shields.io/badge/RELEASE-v1.0.0-blue)
+![current](https://img.shields.io/badge/CURRENT-v1.0.1-blue)
 ![target](https://img.shields.io/badge/TARGET-x86_BIOS-yellow)
 ![boot](https://img.shields.io/badge/BOOT-512_BYTE_SECTOR-white)
 ![machine](https://img.shields.io/badge/MACHINE-BARE_METAL-black)
 ![shell](https://img.shields.io/badge/SHELL-VGA_TEXT_MODE-blue)
 ![asm](https://img.shields.io/badge/ASM-NASM-red)
 ![qemu](https://img.shields.io/badge/PROOF-QEMU-green)
+![vbox](https://img.shields.io/badge/KEYS-VIRTUALBOX_FIXED-green)
 ![license](https://img.shields.io/badge/LICENSE-Apache--2.0-lightgrey)
 
 ```txt
@@ -43,9 +44,9 @@ DIRECT MACHINE CONTACT
 ```
 
 Target: x86 BIOS.
-Proof host: QEMU.
+Proof hosts: QEMU and VirtualBox.
 
-The first machine stays small on purpose:
+The machine stays small on purpose:
 
 ```txt
 boot sector -> 16-bit kernel -> direct VGA shell
@@ -57,24 +58,15 @@ No network.
 No multitasking.
 No package manager.
 
-First working boot proof is recorded in:
-
-```txt
-docs/FIRST_CONTACT.md
-```
-
 ## Docs
 
 ```txt
 docs/MACHINE_NOTES.md   what the box touches
-docs/FINAL_STATE.md     what v1.0.0 freezes
+docs/FINAL_STATE.md     what the current cut freezes
 docs/ISO.md             why the ISO exists
 docs/KERNELS.md         kernel cuts and current pointer
-docs/RELEASE_PLAN.md    release line
-docs/WINDOWS.md         Windows build notes
 docs/PORTS.md           touched hardware ports
 docs/DESIGN.md          shape of the machine
-docs/FIRST_CONTACT.md   first boot proof
 ```
 
 ## Commands
@@ -112,19 +104,12 @@ qemu-system-i386 optional for run
 Windows PowerShell:
 
 ```powershell
-./scripts/doctor.ps1
 ./scripts/build.ps1
 ./scripts/run-qemu.ps1
 ./scripts/run-iso.ps1
 ./scripts/verify.ps1
 ./scripts/kernels.ps1
 python tools/write_manifest.py . build/bonebox.img build/bonebox.manifest.json
-```
-
-Windows setup notes:
-
-```txt
-docs/WINDOWS.md
 ```
 
 POSIX shell with make:
