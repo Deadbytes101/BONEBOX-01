@@ -2,29 +2,20 @@
 from __future__ import annotations
 
 import hashlib
+import re
 import sys
 from pathlib import Path
 
 SECTOR = 512
 KERNEL_OFFSET = SECTOR
-BANNERS = (
-    b"BONEBOX-01 v0.1.7",
-    b"BONEBOX-01 v0.1.6",
-    b"BONEBOX-01 v0.1.5",
-    b"BONEBOX-01 v0.1.4",
-    b"BONEBOX-01 v0.1.3",
-    b"BONEBOX-01 v0.1.2",
-    b"BONEBOX-01 v0.1.1",
-    b"BONEBOX-01",
-)
+BANNER_RE = re.compile(rb"BONEBOX-01 v[0-9]+\.[0-9]+\.[0-9]+")
 
 
 def find_banner(data: bytes) -> tuple[str, int] | None:
-    for banner in BANNERS:
-        offset = data.find(banner)
-        if offset >= 0:
-            return banner.decode("ascii", errors="replace"), offset
-    return None
+    match = BANNER_RE.search(data)
+    if not match:
+        return None
+    return match.group(0).decode("ascii", errors="replace"), match.start()
 
 
 def main(argv: list[str]) -> int:
