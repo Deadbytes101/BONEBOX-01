@@ -53,6 +53,29 @@ The machine stays small on purpose:
 boot sector -> 16-bit kernel -> direct VGA shell
 ```
 
+## Architecture pipeline
+
+```mermaid
+flowchart TD
+    A[POWER ON] --> B[BIOS]
+    B --> C[BOOT SECTOR 512 BYTES]
+    C --> D[LOAD 32 SECTORS]
+    D --> E[JUMP 1000:0000]
+    E --> F[KERNEL/CURRENT.ASM]
+    F --> G[KERNEL/CORE_V101.ASM]
+    G --> H[VGA TEXT MEMORY B800:0000]
+    G --> I[BIOS KEYBOARD INT 16H]
+    G --> J[BIOS TICK 0040:006C]
+    G --> K[PIT AND SPEAKER PORTS]
+    H --> L[BONE SHELL]
+    I --> L
+    J --> L
+    K --> L
+    L --> M[BUILD/BONEBOX.IMG]
+    M --> N[BUILD/BONEBOX.ISO]
+    N --> O[QEMU AND VIRTUALBOX]
+```
+
 No disk writes.
 No filesystem.
 No network.
