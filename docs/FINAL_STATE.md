@@ -32,6 +32,11 @@ Test locally.
 Overwrite the assets on the existing `v1.0.0` release page.
 
 ```txt
+bonebox.img  sha256:6a245580c9e206297ecd7f186e31317d7ef8e8604f80848fa50fdb93d08df702
+bonebox.iso  sha256:7b043168485988b890ebda00da885a1d84aca4fc62c0dc6247401250bec08a9b
+```
+
+```txt
 bonebox.img  raw disk image, canonical
 bonebox.iso  El Torito VM wrapper
 ```
