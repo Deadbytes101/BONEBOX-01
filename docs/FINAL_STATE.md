@@ -1,15 +1,17 @@
 # FINAL STATE
 
-`v1.0.0` proved the box.
-`v1.0.1` fixes the VirtualBox keyboard path.
+`v1.0.0` is the public release line.
+`v1.0.1` is the current kernel cut inside that line.
 
 The raw image is still canonical.
 The ISO is a VM wrapper.
-The kernel pointer now follows the live cut.
+The kernel pointer follows the live cut.
+No new tag is required for this fix.
 
 ## Current cut
 
 ```txt
+line    : v1.0.0 release page
 cut     : v1.0.1
 kernel  : kernel/core_v101.asm
 pointer : kernel/current.asm
@@ -23,21 +25,20 @@ The banner now says:
 BONEBOX-01 v1.0.1
 ```
 
-## Last public release
+## Release assets
+
+Rebuild locally.
+Test locally.
+Overwrite the assets on the existing `v1.0.0` release page.
 
 ```txt
-release : v1.0.0
-img     : bonebox.img
-img sha : 12758c18d5a7a11bb41a0cc717c4aa15fd5fed0ebc2575f4f90ed258adde2b2b
-iso     : bonebox.iso
-iso sha : e059f0922ace02c600e73ac5d8ea8cf7dc8b395af6dcc6054637cd68205ec1b9
-kernel  : kernel/core_v018.asm
-host    : QEMU
-status  : boots in VirtualBox, keyboard path does not answer there
+bonebox.img  raw disk image, canonical
+bonebox.iso  El Torito VM wrapper
 ```
 
-Do not rewrite that release.
-Cut forward.
+Do not move the tag just to replace the files.
+The tag marks the first public line.
+The assets carry the current working cut.
 
 ## Commands in the box
 
@@ -112,13 +113,10 @@ README mark
 
 ## Rule
 
-Do not mutate old release proof.
-Cut forward.
-
 ```txt
 bad proof -> new cut
 new cut -> test
-test -> tag
+test -> upload assets
 ```
 
 Small cuts.
