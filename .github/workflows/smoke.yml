@@ -29,19 +29,23 @@ jobs:
           python3 tools/check_image.py build/bonebox.img
           python3 tools/smoke_image.py build/bonebox.img
           python3 tools/inspect_image.py build/bonebox.img
+          test -f build/bonebox.iso
 
       - name: proof
         run: |
           python3 tools/write_manifest.py . build/bonebox.img build/bonebox.manifest.json
           sha256sum build/bonebox.img | tee build/bonebox.img.sha256
-          ls -l build/bonebox.img build/bonebox.img.sha256 build/bonebox.manifest.json
+          sha256sum build/bonebox.iso | tee build/bonebox.iso.sha256
+          ls -l build/bonebox.img build/bonebox.img.sha256 build/bonebox.iso build/bonebox.iso.sha256 build/bonebox.manifest.json
 
       - name: artifact
         uses: actions/upload-artifact@v4
         with:
-          name: bonebox-img
+          name: bonebox-img-iso
           path: |
             build/bonebox.img
             build/bonebox.img.sha256
+            build/bonebox.iso
+            build/bonebox.iso.sha256
             build/bonebox.manifest.json
           if-no-files-found: error
