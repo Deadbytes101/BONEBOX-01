@@ -1,5 +1,3 @@
-# BONEBOX-01
-
 One box.
 One boot sector.
 No OS underneath.
@@ -23,16 +21,19 @@ Just the box answering back.
 <p align="center">
   <img width="254" height="254" alt="BONEBOX-01 logo" src="https://github.com/user-attachments/assets/90a83d85-7a4d-4264-9fab-e11d602d53bd" />
 </p>
+<h1 align="center">BONEBOX-01</h1>
 
-![current](https://img.shields.io/badge/CURRENT-v1.0.1-blue)
-![target](https://img.shields.io/badge/TARGET-x86_BIOS-yellow)
-![boot](https://img.shields.io/badge/BOOT-512_BYTE_SECTOR-white)
-![machine](https://img.shields.io/badge/MACHINE-BARE_METAL-black)
-![shell](https://img.shields.io/badge/SHELL-VGA_TEXT_MODE-blue)
-![asm](https://img.shields.io/badge/ASM-NASM-red)
-![qemu](https://img.shields.io/badge/PROOF-QEMU-green)
-![vbox](https://img.shields.io/badge/KEYS-VIRTUALBOX_FIXED-green)
-![license](https://img.shields.io/badge/LICENSE-Apache--2.0-lightgrey)
+<p align="center">
+  <img src="https://img.shields.io/badge/CURRENT-v1.0.1-blue" />
+  <img src="https://img.shields.io/badge/TARGET-x86_BIOS-yellow" />
+  <img src="https://img.shields.io/badge/BOOT-512_BYTE_SECTOR-white" />
+  <img src="https://img.shields.io/badge/MACHINE-BARE_METAL-black" />
+  <img src="https://img.shields.io/badge/SHELL-VGA_TEXT_MODE-blue" />
+  <img src="https://img.shields.io/badge/ASM-NASM-red" />
+  <img src="https://img.shields.io/badge/PROOF-QEMU-green" />
+  <img src="https://img.shields.io/badge/KEYS-VIRTUALBOX_FIXED-green" />
+  <img src="https://img.shields.io/badge/LICENSE-Apache--2.0-lightgrey" />
+</p>
 
 ```txt
 BONEBOX MARK
